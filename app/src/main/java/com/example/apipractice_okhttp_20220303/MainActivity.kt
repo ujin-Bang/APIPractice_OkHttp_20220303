@@ -1,5 +1,6 @@
 package com.example.apipractice_okhttp_20220303
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -20,6 +21,12 @@ class MainActivity : BaseActivity() {
     }
     
     override fun setupEvents(){
+
+        binding.btnSignUp.setOnClickListener {
+
+            val myIntent = Intent(mContext, SignUpActivity::class.java)
+            startActivity(myIntent)
+        }
         
         binding.btnLogin.setOnClickListener { 
             
