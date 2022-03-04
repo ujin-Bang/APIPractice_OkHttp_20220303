@@ -39,6 +39,21 @@ class SignUpActivity : BaseActivity() {
 
                         if(code == 200){
 
+//                            가입한 사람의 닉네임 추출 > ~~님 가입을 축하합니다 라는 문구로 토스트 띄우기
+//                            회원가입화면 종료 > 로그인 화면으로 복귀
+                            val dataObj = jsonObj.getJSONObject("data")
+                            val userObj = dataObj.getJSONObject("user")
+
+                            val nickname = userObj.getString("nick_name")
+
+                            runOnUiThread {
+
+                                Toast.makeText(mContext, "${nickname}님 가입을 축하합니다.", Toast.LENGTH_SHORT).show()
+
+                            }
+//                            화면 종료 : 객체 소멸 (UI동작 아님)
+                            finish()
+
                         }
                         else {
                             val message = jsonObj.getString("message")
