@@ -6,11 +6,18 @@ import org.json.JSONObject
 import java.io.IOException
 
 class ServerUtil {
+    
+//    서버유틸로 돌아온 응답을 => 액티비티에서 처리하도록, 일처리 넘기기.
+//    나에게 생긴 일을 > 다른 클래스에게 처리 요청 : interface 활용하기
+    
+    interface JsonResponseHandler {
+        fun onResponse( jsonObj: JSONObject )
+    }
 
 //    서버에 Request를 날리는 역할
 //    함수를 만들려고 하는데 어떤 객체가 실행해도 결과만 잘 나오면 그만인 함수를 만들자.
 //    코틀린에서 static에 해당하는 개념을 어떻게 하느냐? companion object{ }에 만들면 스태틱과 비슷한 처리
-//    (ex=> 메인에서 companion object내에 함수/변수 호출시 => binding사용 안하고 Serverutil.함수(변수)이름으로 바로 찾을 수 있음
+//    (ex=> 메인에서 companion object내에 함수/변수 호출가능 =>  Serverutil.함수(변수)이름으로 사용가능.
 //
     companion object {
 
@@ -18,8 +25,10 @@ class ServerUtil {
         private val BASE_URL = "http://54.180.52.26"
 
 //        로그인 기능 호출 함수
-
-        fun postRequestLogin( id: String, pw: String ){
+//      handler: 이 함수를 쓰는 화면에서 JSON 분석을 어떻게 / UI에서 어떻게 활용할지 방안(인터페이스)
+//      - 처리 방안을 임시로 비워두려면 null 대입 허용.
+    
+        fun postRequestLogin( id: String, pw: String, handler:JsonResponseHandler? ){
 
 //            Request 제작 -> 실제 호출 -> 서버의 응답을 화면에 전달
 
@@ -70,29 +79,12 @@ class ServerUtil {
 
                     val jsonObj = JSONObject( bodyString )
 
-                    Log.d("서버테스트",jsonObj.toString())
+                    Log.d("서버응답",jsonObj.toString())
 
-//                    연습 : 로그인 성공 / 실패에 따른 로그 출력
-//                    "code" 이름표의 Int를 추출, 그 값을 if로 물어보자
-
-                    val code = jsonObj.getInt("code")
-
-                   if(code == 200) {
-                       Log.d("로그인 시도", "성공")
-
-                       val dataObj = jsonObj.getJSONObject("data")
-                       val userObj = dataObj.getJSONObject("user")
-                       val nickname = userObj.getString("nick_name")
-
-                       Log.d("로그인한 사람", nickname)
-                   }
-                    else {
-                        Log.d("로그인 시도","실패")
-
-                       val message =jsonObj.getString("message")
-
-                       Log.d("실패사유", message)
-                   }
+//                   실제 : handler 변수에  jsonObj를 가지고 화면에서 어떻게 처리할지 계획이 들어와 있다
+//                    (계획이 되어있을 때만) 해당 계획을 실행하자.
+                    
+                    handler?.onResponse(jsonObj) //handler? =>핸들러가 이null이 아니면
                 }
 
 
