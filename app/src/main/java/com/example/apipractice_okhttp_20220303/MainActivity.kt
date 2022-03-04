@@ -49,6 +49,7 @@ class MainActivity : BaseActivity() {
 
 //                        토스트는 UI를 조작하는 명령 => 백그라운드에서 UI를 건드리면 안드로이드는 위험한 동작으로 간주하고 앱을 강제로 종료시킨다.
 
+
                        runOnUiThread {
 
 //                           토스트를 띄우는 코드만 UI전담 쓰레드에서 실행하도록
