@@ -1,6 +1,7 @@
 package com.example.apipractice_okhttp_20220303.utils
 
 import okhttp3.FormBody
+import okhttp3.Request
 
 class ServerUtil {
 
@@ -10,7 +11,7 @@ class ServerUtil {
 
     companion object {
 
-//        서버 컴퓨터 주소만 변수로 저장(관리 일원화) => 외부 노출하기 싶지 않다. private로 하자
+//        서버 컴퓨터 주소만 변수로 저장(관리 일원화) => 외부 노출하기 싫다. private로 하자
         private val BASE_URL = "http://54.180.52.26"
 
 //        로그인 기능 호출 함수
@@ -26,6 +27,12 @@ class ServerUtil {
             val formData = FormBody.Builder()
                 .add("email", id)
                 .add("password",pw)
+                .build()
+
+//            제작3) 모든 Request 정보를 종합한 객체 생성 (어느 주소로 + 어느 메쏘드로 + 어떤 파라미터를)
+            val request = Request.Builder()
+                .url(urlSting)
+                .post(formData)
                 .build()
 
         }
