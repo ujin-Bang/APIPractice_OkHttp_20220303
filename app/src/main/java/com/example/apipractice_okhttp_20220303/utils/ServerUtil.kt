@@ -84,7 +84,7 @@ class ServerUtil {
 //                   실제 : handler 변수에  jsonObj를 가지고 화면에서 어떻게 처리할지 계획이 들어와 있다
 //                    (계획이 되어있을 때만) 해당 계획을 실행하자.
                     
-                    handler?.onResponse(jsonObj) //handler? =>핸들러가 이null이 아니면
+                    handler?.onResponse(jsonObj) //handler? =>핸들러가 null이 아니면
                 }
 
 
