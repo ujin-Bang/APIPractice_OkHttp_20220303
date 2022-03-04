@@ -39,7 +39,7 @@ class MainActivity : BaseActivity() {
                     if(code == 200) {
                         
                         runOnUiThread {
-                            Toast.makeText(this@MainActivity, "로그인 성공", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(mContext, "로그인 성공", Toast.LENGTH_SHORT).show()
                         }
                         
                     }
@@ -52,7 +52,7 @@ class MainActivity : BaseActivity() {
                        runOnUiThread {
 
 //                           토스트를 띄우는 코드만 UI전담 쓰레드에서 실행하도록
-                           Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
+                           Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
 
                        }
 
