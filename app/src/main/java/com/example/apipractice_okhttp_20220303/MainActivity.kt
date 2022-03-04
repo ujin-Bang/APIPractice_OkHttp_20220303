@@ -8,7 +8,7 @@ import com.example.apipractice_okhttp_20220303.databinding.ActivityMainBinding
 import com.example.apipractice_okhttp_20220303.utils.ServerUtil
 import org.json.JSONObject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     lateinit var binding: ActivityMainBinding
 
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setValues()
     }
     
-    fun setupEvents(){
+    override fun setupEvents(){
         
         binding.btnLogin.setOnClickListener { 
             
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         
         
     }
-    fun setValues(){
+    override fun setValues(){
         
     }
 }
