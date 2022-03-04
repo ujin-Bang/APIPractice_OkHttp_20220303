@@ -1,14 +1,15 @@
 package com.example.apipractice_okhttp_20220303.utils
 
-import okhttp3.FormBody
-import okhttp3.Request
+import okhttp3.*
+import java.io.IOException
 
 class ServerUtil {
 
 //    서버에 Request를 날리는 역할
 //    함수를 만들려고 하는데 어떤 객체가 실행해도 결과만 잘 나오면 그만인 함수를 만들자.
-//    코틀린에서 static에 해당하는 개념을 어떻게 하느냐? companion object{ }에 만들면 스태틱과 비슷한 처리(
-
+//    코틀린에서 static에 해당하는 개념을 어떻게 하느냐? companion object{ }에 만들면 스태틱과 비슷한 처리
+//    (ex=> 메인에서 companion object내에 함수/변수 호출시 => binding사용 안하고 Serverutil.함수(변수)이름으로 바로 찾을 수 있음
+//
     companion object {
 
 //        서버 컴퓨터 주소만 변수로 저장(관리 일원화) => 외부 노출하기 싫다. private로 하자
@@ -34,6 +35,28 @@ class ServerUtil {
                 .url(urlSting)
                 .post(formData)
                 .build()
+
+//            종합한 Request도 실제 호출을 해 줘야 API 호출이 실행됨(startActivity와 같은 동작이 필요함)
+//            실제 호출 : 클라이언트로써 동작 > OkHttpClient 클래스
+
+            val client = OkHttpClient()
+
+//            OkHttpClient 객체를 이용 >서버에 로그인 기능 실제 호출
+//             호출을 했으면, 서버가 수행한 결과를 받아서 처리
+//            => 서버에 다녀와서 할 일을 등록 : enqueue(Callback)
+
+            client.newCall(request).enqueue( object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+
+                }
+
+
+            })
+
 
         }
     }
