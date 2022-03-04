@@ -1,10 +1,12 @@
 package com.example.apipractice_okhttp_20220303.utils
 
+import okhttp3.FormBody
+
 class ServerUtil {
 
 //    서버에 Request를 날리는 역할
 //    함수를 만들려고 하는데 어떤 객체가 실행해도 결과만 잘 나오면 그만인 함수를 만들자.
-//    코틀린에서 static에 해당하는 개념을 어떻게 하느냐? companion object{ }에 만들면 스태틱과 비슷한 처리
+//    코틀린에서 static에 해당하는 개념을 어떻게 하느냐? companion object{ }에 만들면 스태틱과 비슷한 처리(
 
     companion object {
 
@@ -19,6 +21,12 @@ class ServerUtil {
 
 //            제작1) 어느 주소(Url)로 접근할지? => 서버주소 + 기능주소
             val urlSting = "${BASE_URL}/user"
+
+//            제작2) 파라미터 담아주기 => 어떤 이름표를 / 어느 공간에 담아야 하는가
+            val formData = FormBody.Builder()
+                .add("email", id)
+                .add("password",pw)
+                .build()
 
         }
     }
