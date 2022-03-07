@@ -21,6 +21,19 @@ class SignUpActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        binding.btnEmailCheck.setOnClickListener {
+
+//            입력한 이메일 값 추출
+            val inputEmail = binding.edtEmail.text.toString()
+
+//            서버의 중복확인(/user_check - GET) API 활용 => ServerUtil에 함수 추가해서 가져다 활용
+//            그 응답 code값에 따라 다른 문구 배치.
+
+            ServerUtil.getRequestDuplicatedCheck("EMAIL", inputEmail, null)
+
+
+        }
+
         binding.btnSignUp.setOnClickListener {
 
             val inputEmail = binding.edtEmail.text.toString()
