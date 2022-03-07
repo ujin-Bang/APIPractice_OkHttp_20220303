@@ -23,6 +23,11 @@ class SignUpActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        binding.edtNickname.addTextChangedListener {
+
+            binding.txtNicknameCheckResult.text = "중복 확인을 해주세요"
+        }
+
 //        닉네임 검사 버튼 기능
         binding.btnNicknameCheck.setOnClickListener {
 
