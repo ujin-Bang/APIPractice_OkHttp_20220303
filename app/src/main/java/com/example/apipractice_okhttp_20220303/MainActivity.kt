@@ -33,7 +33,7 @@ class MainActivity : BaseActivity() {
 
                 runOnUiThread {
 
-                    binding.txtLoginUserNickname.text = nickname
+
                 }
             }
 
