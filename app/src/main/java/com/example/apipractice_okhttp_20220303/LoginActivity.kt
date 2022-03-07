@@ -47,7 +47,10 @@ class LoginActivity : BaseActivity() {
                         runOnUiThread {
                             Toast.makeText(mContext, "로그인 성공", Toast.LENGTH_SHORT).show()
                         }
-//                        메인 화면으로 진입
+//                        메인 화면으로 진입 => 클래스의 객체화(UI동작이 아니다. UI쓰레드안에 넣지 않아도 됨)
+
+                        val myIntent = Intent(mContext, MainActivity::class.java)
+                        startActivity(myIntent)
 
                     } else {
 
