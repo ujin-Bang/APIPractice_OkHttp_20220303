@@ -103,6 +103,11 @@ class SignUpActivity : BaseActivity() {
 
         binding.btnSignUp.setOnClickListener {
 
+//           [도전 과제] 만약 이메일/ 닉네임 중복검사를 통과하지 못한 상태라면,
+//            토스트로 " 이메일 중복 검사를 통과해야 합니다 " 등의 문구만 출력, 가입진행 안되도록
+
+//           hint) 진행할 상황이 아니라면, return 처리하면 함수 종료.
+
             val inputEmail = binding.edtEmail.text.toString()
             val inputPw = binding.edtPassword.text.toString()
             val inputNickname = binding.edtNickname.text.toString()

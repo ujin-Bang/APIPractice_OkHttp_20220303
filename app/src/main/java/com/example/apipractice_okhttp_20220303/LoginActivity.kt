@@ -51,6 +51,13 @@ class LoginActivity : BaseActivity() {
                         runOnUiThread {
                             Toast.makeText(mContext, "${nickname}님 환영합니다.", Toast.LENGTH_SHORT).show()
                         }
+
+//                        서버가 내려준 토큰값을 변수에 담아보자.
+                        val token = dataObj.getString("token")
+
+//                        변수에 담긴 토큰값(String)을 SharedPreferences에 담아두자.
+//                        로그인 성공시에는 담기만, 필요한 화면/클래스에서 깨내서 사용
+
 //                        메인 화면으로 진입 => 클래스의 객체화(UI동작이 아니다. UI쓰레드안에 넣지 않아도 됨)
 
                         val myIntent = Intent(mContext, MainActivity::class.java)
