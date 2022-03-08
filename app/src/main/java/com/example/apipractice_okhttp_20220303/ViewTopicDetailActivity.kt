@@ -51,6 +51,8 @@ class ViewTopicDetailActivity : BaseActivity() {
 
 //           투표 현황 새로고침(응답)
 
+
+
         }
     }
 
