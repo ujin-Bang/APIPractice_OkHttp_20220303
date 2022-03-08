@@ -30,6 +30,12 @@ class ViewTopicDetailActivity : BaseActivity() {
     override fun setValues() {
 
         binding.txtTitle.text = mTopicData.title
+
+        setTopicDetailToUi()
+    }
+
+    fun setTopicDetailToUi(){
+
         Glide.with(mContext).load(mTopicData.imageURL).into(binding.imgTopicBackGround)
         getTopicDetailFromServer()
     }
@@ -47,6 +53,12 @@ class ViewTopicDetailActivity : BaseActivity() {
 
 //                변환된 객체를 mTopicData로 다시 대입 => UI 반영도 다시 실행
                 mTopicData = topicData
+
+                runOnUiThread {
+
+                    setTopicDetailToUi()
+
+                }
             }
 
         })
