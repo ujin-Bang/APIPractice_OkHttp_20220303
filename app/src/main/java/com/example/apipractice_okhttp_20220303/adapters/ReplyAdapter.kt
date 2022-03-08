@@ -27,6 +27,15 @@ class ReplyAdapter(
 
         val row = tempRow!!
 
+        val data = mList[position]
+
+        val txtSelectedSide = row.findViewById<TextView>(R.id.txtSelectedSide)
+        val txtWrihtNickname = row.findViewById<TextView>(R.id.txtWrihtNickname)
+        val txtReplyCount = row.findViewById<TextView>(R.id.txtReplyCount)
+
+        txtReplyCount.text = data.content
+        txtWrihtNickname.text = data.writer.nickname
+        txtSelectedSide.text = "[${data.selectedSide.title}]"
 
 
         return row
