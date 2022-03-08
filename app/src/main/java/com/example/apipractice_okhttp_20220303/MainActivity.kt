@@ -35,6 +35,10 @@ class MainActivity : BaseActivity() {
 
             val clickedTopic = mTopicList[poistion]
 
+            val myIntent = Intent(mContext, ViewTopicDetailActivity::class.java)
+            myIntent.putExtra("topic", clickedTopic)
+            startActivity(myIntent)
+
         }
 
         binding.btnLogout.setOnClickListener {
