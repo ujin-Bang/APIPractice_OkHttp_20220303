@@ -29,15 +29,21 @@ class ViewTopicDetailActivity : BaseActivity() {
 
     override fun setValues() {
 
-        binding.txtTitle.text = mTopicData.title
-
+        getTopicDetailFromServer()
         setTopicDetailToUi()
     }
 
     fun setTopicDetailToUi(){
 
         Glide.with(mContext).load(mTopicData.imageURL).into(binding.imgTopicBackGround)
-        getTopicDetailFromServer()
+
+        binding.txtTitle.text = mTopicData.title
+
+//        1번진영 제목 , 2번진영 제목
+         binding.txtSide1.text = mTopicData.sideList[0].title
+         binding.txtSide2.text = mTopicData.sideList[1].title
+
+
     }
 
     fun getTopicDetailFromServer(){
