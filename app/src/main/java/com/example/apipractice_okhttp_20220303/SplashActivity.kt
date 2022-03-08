@@ -26,6 +26,7 @@ class SplashActivity : BaseActivity() {
 
 //        2.5초가 지나기 전에 미리 사용자 정보 조회 시도(토큰 유효성 검증)
         var isTokenOk = false // 검사를 통과하면 true로 변경 예정.
+
         ServerUtil.getRequestMainInfo(mContext, object : ServerUtil.JsonResponseHandler{
             override fun onResponse(jsonObj: JSONObject) {
 
