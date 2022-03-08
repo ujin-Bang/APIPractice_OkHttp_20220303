@@ -31,6 +31,12 @@ class MainActivity : BaseActivity() {
     }
     override fun setupEvents() {
 
+        binding.topicListView.setOnItemClickListener { adapterView, view, poistion, l ->
+
+            val clickedTopic = mTopicList[poistion]
+
+        }
+
         binding.btnLogout.setOnClickListener {
 
 //            경고창 > 확인시 로그아웃
