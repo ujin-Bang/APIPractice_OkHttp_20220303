@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.apipractice_okhttp_20220303.R
 import com.example.apipractice_okhttp_20220303.datas.ReplyData
 import com.example.apipractice_okhttp_20220303.datas.TopicData
+import java.text.SimpleDateFormat
 import java.util.*
 
 class ReplyAdapter(
@@ -40,8 +41,14 @@ class ReplyAdapter(
         txtSelectedSide.text = "[${data.selectedSide.title}]"
 //        임시 - 작성일자만 "2022-03-10" 형태로 표현 => 연/ 월/ 일 데이터 가공
 //        월은 1작게 나옴. +1로 보정해줘야 함
-        txtCreateAt.text = "${data.createdAt.get(Calendar.YEAR)}-${data.createdAt.get(Calendar.MONTH) +1}-${data.createdAt.get(Calendar.DAY_OF_MONTH)}"
+//        txtCreateAt.text = "${data.createdAt.get(Calendar.YEAR)}-${data.createdAt.get(Calendar.MONTH) +1}-${data.createdAt.get(Calendar.DAY_OF_MONTH)}"
 
+//        임시 2 - "2022-03-10" 형태로 표현 => SimpleDateFormat 활용
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+
+//        sdf.format(Date객체) => 지정해둔 양식의 String으로 가공
+//          createdAt : Calendar / format의 파라미터 :Date => Calendaq의 내용물인 time 변수가 Date
+        txtCreateAt.text = sdf.format( data.createdAt.time)
 
         return row
 
