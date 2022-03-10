@@ -7,7 +7,57 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:padding="20dp"
         tools:context=".EditReplyActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="참여 주제"/>
+
+        <TextView
+            android:id="@+id/txtTopicTitle"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="민트 초코 등등.." />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="선택 진영"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/txtSideTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="JMT등등.,"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="댓글 내용"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/edtReplyContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="5글자 이상으로 입력"
+            android:gravity="top"
+            android:minLines="5"/>
+
+        <Button
+            android:id="@+id/btnPostReply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="댓글 등록하기"/>
 
     </LinearLayout>
 </layout>
