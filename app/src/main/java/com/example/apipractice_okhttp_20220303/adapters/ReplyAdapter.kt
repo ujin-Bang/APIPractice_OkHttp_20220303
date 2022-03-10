@@ -54,11 +54,11 @@ class ReplyAdapter(
 //        val sdf = SimpleDateFormat("yyyy년 M월 d일")
 //        val sdf = SimpleDateFormat("yyMMdd")
 //        val sdf = SimpleDateFormat("M월 d일 a h시 m분")
-        val sdf = SimpleDateFormat("yy년 M/d (E) - HH:mm")
+//        val sdf = SimpleDateFormat("yy년 M/d (E) - HH:mm")
 
 //        sdf.format(Date객체) => 지정해둔 양식의 String으로 가공
 //          createdAt : Calendar / format의 파라미터 :Date => Calendaq의 내용물인 time 변수가 Date
-        txtCreateAt.text = sdf.format( data.createdAt.time)
+        txtCreateAt.text = data.getFormattedCreatedAt()
 
         return row
 
