@@ -36,7 +36,7 @@ class ReplyData(
 //            Calendar로 되어있는 작성일시의 시간을 서버가 알려주는 댓글 작성 일시로 맞춰줘야 함.
 
 //            임시 2022-01-12 10:55:35로 변경 (한번에 모두 변경)
-        replyData.createdAt.set(2022,Calendar.JANUARY,12,10,55,35)
+            replyData.createdAt.set(2022,Calendar.JANUARY,12,10,55,35)
 
 //            임시2) 연돋만 2021년으로 변경 (항목을 찍어서 변경)
             replyData.createdAt.set( Calendar.YEAR, 2021)
