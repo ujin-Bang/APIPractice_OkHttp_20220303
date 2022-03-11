@@ -109,9 +109,8 @@ class ViewTopicDetailActivity : BaseActivity() {
 
         mAdapter = ReplyAdapter(mContext, R.layout.reply_list_item, mReplyList)
         binding.replyListView.adapter = mAdapter
+
         setTopicDataToUi()
-
-
 //        getTopicDetailFromServer() // 어차피 onResume에서 서버에 여결 예정 굳이 써줄 필요 없다.
 
     }
