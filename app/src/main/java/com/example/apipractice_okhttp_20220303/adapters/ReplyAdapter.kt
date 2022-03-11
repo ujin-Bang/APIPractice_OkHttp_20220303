@@ -36,6 +36,10 @@ class ReplyAdapter(
         val txtReplyCount = row.findViewById<TextView>(R.id.txtReplyCount)
         val txtCreateAt = row.findViewById<TextView>(R.id.txtCreatedAt)
 
+        val txtReReplyCount = row.findViewById<TextView>(R.id.txtReReplyCount)
+        val txtLikeCount = row.findViewById<TextView>(R.id.txtLikeCount)
+        val txtDisLikeCount = row.findViewById<TextView>(R.id.txtDisLikeCount)
+
         txtReplyCount.text = data.content
         txtWrihtNickname.text = data.writer.nickname
         txtSelectedSide.text = "[${data.selectedSide.title}]"
@@ -60,6 +64,9 @@ class ReplyAdapter(
 //          createdAt : Calendar / format의 파라미터 :Date => Calendaq의 내용물인 time 변수가 Date
         txtCreateAt.text = data.getFormattedCreatedAt()
 
+        txtReReplyCount.text = "답글 ${data.reReplyCount}"
+        txtLikeCount.text = "좋아요 ${data.likeCount}"
+        txtDisLikeCount.text = "싫어요 ${data.disLickeCount}"
         return row
 
     }
