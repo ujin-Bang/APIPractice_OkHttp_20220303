@@ -372,6 +372,48 @@ class ServerUtil {
 
         }
 
+        fun postRequestReplyLikeOrDisLike(context: Context, replyId: Int,isLike:Boolean, handler: JsonResponseHandler?) {
+
+            val urlSting = "${BASE_URL}/topic_reply_like"
+
+            val formData = FormBody.Builder()
+                .add("reply_id", replyId.toString())
+                .add("is_like", isLike.toString())
+                .build()
+
+//            제작3) 모든 Request 정보를 종합한 객체 생성 (어느 주소로 + 어느 메쏘드로 + 어떤 파라미터를)
+            val request = Request.Builder()
+                .url(urlSting)
+                .post(formData)
+                .header("X-Http-Token", ContextUtil.getToken(context))
+                .build()
+
+
+            val client = OkHttpClient()
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+
+
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+
+
+                    val bodyString = response.body!!.string()
+                    val jsonObj = JSONObject(bodyString)
+
+                    Log.d("서버응답", jsonObj.toString())
+
+                    handler?.onResponse(jsonObj)
+                }
+
+
+            })
+
+
+        }
+
     }
 
 }
