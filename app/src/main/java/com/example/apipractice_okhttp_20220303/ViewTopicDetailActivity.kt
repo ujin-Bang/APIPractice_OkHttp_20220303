@@ -213,6 +213,8 @@ class ViewTopicDetailActivity : BaseActivity() {
         super.onResume()
 
         getTopicDetailFromServer()
+
+
     }
 
 }

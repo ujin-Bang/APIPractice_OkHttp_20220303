@@ -98,7 +98,6 @@ class ReplyAdapter(
 
             }
 
-//        싫어요가 눌려도 마찬가지 처리 => 싫어요 API호출(기존함수 활용) + 토론 상세화면 댓글 목록 새로고침
 
 //        좋아요가 눌렸는지 아닌지에 따라 글씨색상 변경./ 배경 drawable도 설정
 
@@ -110,6 +109,36 @@ class ReplyAdapter(
         else{
             txtLikeCount.setTextColor(ContextCompat.getColor(mContext, R.color.deep_dark_gray))
             txtLikeCount.setBackgroundResource(R.drawable.dark_gray_border_box)
+        }
+
+
+//        싫어요가 눌려도 마찬가지 처리 => 싫어요 API호출(기존함수 활용) + 토론 상세화면 댓글 목록 새로고침
+
+        txtDisLikeCount.setOnClickListener {
+
+            ServerUtil.postRequestReplyLikeOrDisLike(
+                mContext,
+                data.id,
+                false,
+                object : ServerUtil.JsonResponseHandler{
+                    override fun onResponse(jsonObj: JSONObject) {
+                        (mContext as ViewTopicDetailActivity).getTopicDetailFromServer()
+                    }
+
+                }
+            )
+
+//            좋아요가 눌렸는지 안 눌렸는지에 대한 글자 색상/ 배경 drawable 변경하기
+        if(data.isMyDisLike){
+            txtDisLikeCount.setTextColor(ContextCompat.getColor(mContext, R.color.naver_red))
+            txtDisLikeCount.setBackgroundResource(R.drawable.naver_red_border_box)
+
+        }
+        else{
+            txtDisLikeCount.setTextColor(ContextCompat.getColor(mContext, R.color.deep_dark_gray))
+            txtDisLikeCount.setBackgroundResource(R.drawable.naver_red_border_box)
+
+        }
 
 
         }
