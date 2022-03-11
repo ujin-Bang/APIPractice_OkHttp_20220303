@@ -2,6 +2,7 @@ package com.example.apipractice_okhttp_20220303
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.apipractice_okhttp_20220303.databinding.ActivityEditReplyBinding
 import com.example.apipractice_okhttp_20220303.datas.TopicData
@@ -21,6 +22,21 @@ class EditReplyActivity : BaseActivity() {
         setValues()
     }
     override fun setupEvents() {
+        
+        binding.btnPostReply.setOnClickListener { 
+            
+//            앱에서 검사 > 입력문ㄱ가 5자 미만이면 토스트, 함수 강제 종료.
+            
+            val inputContent = binding.edtReplyContent.text.toString()
+            
+            if(inputContent.length < 5) {
+                Toast.makeText(mContext, "5자 이상으로 입력해주세요", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            
+//            입력한 내용을 > 서버 API 호출
+            
+        }
 
     }
 
