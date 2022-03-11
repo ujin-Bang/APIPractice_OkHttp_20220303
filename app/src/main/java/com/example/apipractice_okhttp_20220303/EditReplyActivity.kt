@@ -6,6 +6,8 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.apipractice_okhttp_20220303.databinding.ActivityEditReplyBinding
 import com.example.apipractice_okhttp_20220303.datas.TopicData
+import com.example.apipractice_okhttp_20220303.utils.ServerUtil
+import org.json.JSONObject
 
 class EditReplyActivity : BaseActivity() {
 
@@ -25,7 +27,7 @@ class EditReplyActivity : BaseActivity() {
         
         binding.btnPostReply.setOnClickListener { 
             
-//            앱에서 검사 > 입력문ㄱ가 5자 미만이면 토스트, 함수 강제 종료.
+//            앱에서 검사 > 입력문자가 5자 미만이면 토스트, 함수 강제 종료.
             
             val inputContent = binding.edtReplyContent.text.toString()
             
@@ -35,6 +37,18 @@ class EditReplyActivity : BaseActivity() {
             }
             
 //            입력한 내용을 > 서버 API 호출
+
+            ServerUtil.postRequestTopicReply(
+                mContext,
+                mTopicData.id,
+                inputContent,
+                object :ServerUtil.JsonResponseHandler{
+                    override fun onResponse(jsonObj: JSONObject) {
+
+                    }
+
+                }
+            )
             
         }
 
