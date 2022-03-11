@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
@@ -33,6 +34,8 @@ class MainActivity : BaseActivity() {
 
     }
     override fun setupEvents() {
+
+
 
         binding.topicListView.setOnItemClickListener { adapterView, view, poistion, l ->
 
@@ -70,6 +73,10 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+        //        액션바의 백버튼(BaseActivity가 물려줌) 숨김처리
+
+        btnBack.visibility = View.GONE
 
 
 //        메인 화면 정보 가져오기 => API 호출 / 응답 처리.
