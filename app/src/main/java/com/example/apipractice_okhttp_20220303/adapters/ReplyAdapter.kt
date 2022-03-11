@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.apipractice_okhttp_20220303.R
+import com.example.apipractice_okhttp_20220303.ViewTopicDetailActivity
 import com.example.apipractice_okhttp_20220303.datas.ReplyData
 import com.example.apipractice_okhttp_20220303.datas.TopicData
 import com.example.apipractice_okhttp_20220303.utils.ServerUtil
@@ -80,6 +81,16 @@ class ReplyAdapter(
             object : ServerUtil.JsonResponseHandler{
                 override fun onResponse(jsonObj: JSONObject) {
 
+//                  무조건 댓글 목록 새로고침
+//                   Adapter 코딩 => 액티비티 기능 실행
+
+//                    어댑터 객체화시 mContext 변수에 어느 화면에서 사용하는지 대입
+//                      mContext는 Context타입으로 되어 있음. 대입하는 객체는 ViewTopic액티비티 객체이다 =>다형성을 활용하고 있는것
+
+//                    부모 형태의 변수에 담긴 자식 객체는 캐스팅을 통해서 원상복구 가능.
+//                    자식에서 만든 별도의 함수들을 다시 사용 가능
+
+                    (mContext as ViewTopicDetailActivity).getTopicDetailFromServer()
                 }
 
             })
